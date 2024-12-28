@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FluxionX</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        h1 {
+            margin: 20px 0;
+        }
+
+        #url-input {
+            width: 400px;
+            padding: 10px;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        iframe {
+            width: 100%;
+            height: 80vh;
+            border: none;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Simple Web Browser</h1>
+    <input type="text" id="url-input" placeholder="Enter URL (e.g. www.youtube.com)" />
+    <button onclick="openURL()">Go</button>
+
+    <iframe id="browser-frame" src="" frameborder="0"></iframe>
+
+    <script>
+        function openURL() {
+            var url = document.getElementById("url-input").value;
+
+            if (url) {
+                // URL이 http:// 또는 https://로 시작하지 않으면 자동으로 추가
+                if (!url.startsWith('http://') && !url.startsWith('https://')) {
+                    url = 'http://' + url;
+                }
+                
+                // iframe에 URL을 로드
+                document.getElementById("browser-frame").src = url;
+            }
+        }
+    </script>
+</body>
+</html>
